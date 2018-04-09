@@ -1,0 +1,50 @@
+
+#USAGE: ./train.sh <transys> <model>
+
+model=$1_$2
+transys=$1
+mkdir diskT/${model}_models
+path=diskT/${model}_models
+
+
+GE=gea
+CO=coa
+TR=traina
+TE=testa
+EV=eval
+
+if [ $GE = "ge" ]; then
+python gen_oracle_seq.py ptb3-wsj-train.conllx $path/train.${model}.seq --transsys $transys --mappings mappings-ptb.txt
+fi
+
+#rm ptb_${model}_feats.pickle
+
+
+
+
+
+
+if [ $CO = "co" ]; then
+./test_oracle.sh ptb3-wsj-train.conllx $transys mappings-ptb.txt
+fi
+
+
+if [ $TR = "train" ]; then
+#mkdir $path${model}_models
+
+python train_parser.py ptb3-wsj-train.conllx --seq_file $path/train.${model}.seq --wordvec_file glove.6B.100d.txt --vocab_file vocab.pickle --feat_file $path/ptb_${model}_feats.pickle --model_dir $path --transsys $transys --mappings_file mappings-ptb.txt
+fi
+
+if [ $TE = "test" ]; then
+python eval_parser.py ptb3-wsj-test.conllx --vocab_file vocab.pickle --model_dir $path --transsys $transys --eval_dataset test --mappings_file mappings-ptb.txt
+fi
+
+if [ $EV = "eval" ]; then
+cut -f1-6 ptb3-wsj-test.conllx | paste - $path/test_eval_beam_1_output_epoch9.txt > system_pred_${model}.conllx
+
+echo 'CONLL Eval'
+python eval.py -g ptb3-wsj-test.conllx -s system_pred_${model}.conllx -language conll
+
+echo 'PTB Eval'
+python eval.py -g ptb3-wsj-test.conllx -s system_pred_${model}.conllx
+fi

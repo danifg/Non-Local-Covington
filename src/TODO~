@@ -1,0 +1,7 @@
+
+
+nohup ./train.sh Cov2 nueva & EJECUTANDOSE
+
+nohup ./train.sh Cov otra &
+
+nohup ./train.sh NCov notra &

@@ -43,7 +43,7 @@ To evaluate the trained parser, run:
 python eval_parser.py <dev data> --vocab_file vocab.pickle --model_dir NCov_models --transsys NCov --eval_dataset dev --mappings_file mappings.txt
 ```
 
-This will generate output files in the model directory with names like `models_NCov/dev_eval_beam_1_output_epoch0.txt`, which contain the predicted dependency parses.
+This will generate output files like `NCov_models/dev_eval_beam_1_output_epoch0.txt`, which contain the predicted dependency parses.
 
 A python implementation of labelled and unlabelled attachment score evaluation is also provided. Just run:
 

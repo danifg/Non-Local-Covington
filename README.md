@@ -8,13 +8,13 @@ pip install -r requirements.txt
 ```
 
 ### Data preparation
-First, we need to create a file that maps all dependency arc types and all part-of-speech (POS) types into integers. This can be achieved by running the following script under `utils/`
+First, we need to create for the training data a file that maps all dependency arc types and all part-of-speech (POS) types into integers. This can be achieved by running the following script under `utils/`
 
 ```
 ./create_mappings.sh <train data> > ../src/mappings.txt
 ```
 
-We also need to create the oracle sequence of transitions for our parsers to follow. To do this, go to `src/`, and run
+We also need to create the oracle sequence of transitions for training our parser. To do this, go to `src/`, and run
 
 ```
 python gen_oracle_seq.py <train data> train.NCov.seq --transsys NCov --mappings mappings.txt

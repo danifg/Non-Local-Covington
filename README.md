@@ -1,5 +1,5 @@
 ## Non-Local Covington
-This repository includes the code of the Non-Local Covington parser described in NAACL paper [Non-Projective Dependency Parsing with Non-Local Transitions](https://arxiv.org/pdf/1710.09340.pdf). The implementation is based on the Arc-Swift project (https://github.com/qipeng/arc-swift) and reuse part of its code, including data preparation and evaluating scripts.
+This repository includes the code of the Non-Local Covington parser described in NAACL paper [Non-Projective Dependency Parsing with Non-Local Transitions](https://arxiv.org/pdf/1710.09340.pdf). The implementation is based on the Arc-Swift project (https://github.com/qipeng/arc-swift) and reuses part of its code, including data preparation and evaluating scripts.
 
 This implementation requires Tensorflow 1.0 or above, and other Python dependencies are included in `requirements.txt`, which can be installed via `pip` by running:
 

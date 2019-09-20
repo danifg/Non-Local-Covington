@@ -53,6 +53,10 @@ python eval.py -g <dev data> -s system_pred.conllx
 ```
 By default the script removes punctuation according to the gold Penn Treebank POS tags of the tokens. Use `--language conll` to generate results compatible with the CoNLL official evaluation script. 
 
+## Acknowledgments
+
+This work has received funding from the European Research Council (ERC), under the European Union's Horizon 2020 research and innovation programme (FASTPARSE, grant agreement No 714150), from MINECO (FFI2014-51978-C2-2-R, TIN2017-85160-C2-1-R) and from Xunta de Galicia (ED431B 2017/01).
+
 ## License
 
 All work contained in this package is licensed under the Apache License, Version 2.0. See the included LICENSE file.
